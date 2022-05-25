@@ -67,10 +67,8 @@ ggplot(trap)+geom_line(aes(x,value))+
 ENV_new<-test_data[,4:6]
 pred_newENV <- aquatrap_pred(ENV_new, myAquaOut)
 ```
-
+get HSI index for the predicted set of environemntal data
 ``` r
-# get HSI index for teh predicted set of environemntal data
-
 data_tsi<- cbind(test_data, yul= pred_newENV$yul)
 # get continents map
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")  # add continents
@@ -121,9 +119,8 @@ plot(AUC, main="ROCR", colorize=TRUE,
 ```
 
 ![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
-
+Get AUC score
 ``` r
-
 AUC <- ROCR::performance( ROC_curve, "auc")@y.values
 print(AUC[[1]])
 #> [1] 0.8608912
