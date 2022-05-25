@@ -119,6 +119,7 @@ plot(AUC, main="ROCR", colorize=TRUE,
 ```
 
 ![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
+
 Get AUC score
 ``` r
 AUC <- ROCR::performance( ROC_curve, "auc")@y.values
