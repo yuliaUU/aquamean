@@ -8,8 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  fig.path = "man/figures/README-"
 )
 ```
 
@@ -18,7 +17,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of aquamean is to ...
+The goal of `aquamean` is to compute the aquamap model {trapeze} based on spatial occurrence and project the habitat suitability index for a given environmental raster.
 
 ## Installation
 
@@ -33,12 +32,12 @@ devtools::install_github("yuliaUU/aquamean")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example, message=FALSE, warning=FALSE}
 library(aquamean)
 library(tidyverse)
-library(rnaturalearthdata)
-library(sf)
-library(ROCR)
+library(rnaturalearthdata) # to get world map for plotting
+library(sf) # for plotting spatial data
+library(ROCR) # for getting AUC curve
 ```
 
 
@@ -46,15 +45,15 @@ library(ROCR)
 
 ```{r fun}
 #test data
- x <-which(test_data$occurance==1)
+x <-which(test_data$occurance==1)
 ENV<-test_data[x,4:6]
 
 myAquaOut <- aquatrap(ENV, quant = c(.01, 0.25, 0.75, 0.99))
 
 ```
 
-To visualize the trapeze probability function for each environemntal data:
-```{r}
+To visualize the trapeze probability function for each environmental data:
+```{r fig.height=4, fig.width=7}
 # check how all trapeze ENV variables look like:
 # environmental variables as a trapezoid function
 x <- myAquaOut$trap.env %>%pivot_longer( cols = everything())
@@ -63,6 +62,7 @@ trap <- x %>%mutate(x=y$value)
 #plot trap variables
 ggplot(trap)+geom_line(aes(x,value))+
   facet_wrap(~ name,scales ="free_x")+
+  labs(x="Environmnetal Var", y="Probability")+
   theme_bw()
 ```
 
@@ -75,7 +75,7 @@ pred_newENV <- aquatrap_pred(ENV_new, myAquaOut)
 ```
 
 
-```{r}
+```{r fig.height=5, fig.width=8}
 # get HSI index for teh predicted set of environemntal data
 
 data_tsi<- cbind(test_data, yul= pred_newENV$yul)
@@ -93,13 +93,13 @@ map <- ggplot(data = world) +
 # plot the data
 map + 
   geom_raster(data = data_tsi, aes(x = Lon, y = Lat, fill= yul))+
-  viridis:: scale_fill_viridis(option = "H", na.value = NA)+ labs(x="",y="")
+  viridis::scale_fill_viridis(option = "H", na.value = NA)+ labs(x="",y="")
 ```
 
 # ROCR curve
 
 To get a ROC curve for your model
-```{r}
+```{r fig.height=6, fig.width=6}
 tbl<- cbind(yul= pred_newENV$yul, test_data[,3])%>%
   mutate(occurance=as.numeric(ifelse(is.na(occurance),0, occurance)))%>%
   drop_na()

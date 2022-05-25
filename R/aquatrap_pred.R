@@ -1,10 +1,10 @@
-#' A function to predict the TSI index to a new set (or future) environemntal variables
+#' A function to predict the TSI index to a new set (or future) environmental variables
 #'
 #' @param ENV_new A set of new environmental data to be used for prediction
-#' @param myAquaOut  output of aquatrap function 
+#' @param myAquaOut An output of \aquatrap function 
 #' @param na.rm A logical indicating whether missing values should be removed when calculating the niche. Default is FALSE
 #'
-#' @return a list object with 2 elements: trap.env - a trapeze environmental variables and yul- HSI index (probability of occurance)
+#' @return a list object with 2 elements: \trap.env - a trapeze environmental variables and \yul- HSI index (probability of occurance)
 #' @export
 #' 
 #' @import dplyr

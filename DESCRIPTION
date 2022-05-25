@@ -5,7 +5,7 @@ Version: 1.0.0
 Author: Yulia Egorova, Gabriel Reygondeau
 Maintainer: The package maintainer <yourself@somewhere.net>
 Imports: dplyr, psych, tibble, readr, rlang
-Description: Compute the aquamap model {trapeze} based on spatial occurence and project the habitat suitability index for a given environmental raster.
+Description: Compute the aquamap model {trapeze} based on spatial occurrence and project the habitat suitability index for a given environmental raster.
 Depends:
     R (>= 3.1)
 License: MIT + file LICENSE
