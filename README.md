@@ -6,7 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of aquamean is to …
+The goal of `aquamean` is to compute the aquamap model {trapeze} based
+on spatial occurrence and project the habitat suitability index for a
+given environmental raster.
 
 ## Installation
 
@@ -25,31 +27,22 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(aquamean)
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-#> ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.7     ✔ dplyr   1.0.9
-#> ✔ tidyr   1.2.0     ✔ stringr 1.4.0
-#> ✔ readr   2.1.2     ✔ forcats 0.5.1
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-library(rnaturalearthdata)
-library(sf)
-#> Linking to GEOS 3.9.1, GDAL 3.3.2, PROJ 7.2.1; sf_use_s2() is TRUE
-library(ROCR)
+library(rnaturalearthdata) # to get world map for plotting
+library(sf) # for plotting spatial data
+library(ROCR) # for getting AUC curve
 ```
 
 ## Use of `aquatrap` function
 
 ``` r
 #test data
- x <-which(test_data$occurance==1)
+x <-which(test_data$occurance==1)
 ENV<-test_data[x,4:6]
 
 myAquaOut <- aquatrap(ENV, quant = c(.01, 0.25, 0.75, 0.99))
 ```
 
-To visualize the trapeze probability function for each environemntal
+To visualize the trapeze probability function for each environmental
 data:
 
 ``` r
@@ -61,11 +54,12 @@ trap <- x %>%mutate(x=y$value)
 #plot trap variables
 ggplot(trap)+geom_line(aes(x,value))+
   facet_wrap(~ name,scales ="free_x")+
+  labs(x="Environmnetal Var", y="Probability")+
   theme_bw()
 #> Warning: Removed 2 row(s) containing missing values (geom_path).
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-2-1.png)<!-- -->
 
 ## Use of `aquatrap_pred` function
 
@@ -93,11 +87,11 @@ map <- ggplot(data = world) +
 # plot the data
 map + 
   geom_raster(data = data_tsi, aes(x = Lon, y = Lat, fill= yul))+
-  viridis:: scale_fill_viridis(option = "H", na.value = NA)+ labs(x="",y="")
+  viridis::scale_fill_viridis(option = "H", na.value = NA)+ labs(x="",y="")
 #> Warning: Removed 79292 rows containing missing values (geom_raster).
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
 
 # ROCR curve
 
@@ -126,7 +120,7 @@ plot(AUC, main="ROCR", colorize=TRUE,
      yaxis.col.axis="black", cex.lab=1, cex.main=1)
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
 
 ``` r
 
