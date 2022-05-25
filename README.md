@@ -93,7 +93,7 @@ map +
 
 ![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
 
-# ROCR curve
+## ROCR curve
 
 To get a ROC curve for your model
 

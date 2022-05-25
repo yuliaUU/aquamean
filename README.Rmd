@@ -96,10 +96,10 @@ map +
   viridis::scale_fill_viridis(option = "H", na.value = NA)+ labs(x="",y="")
 ```
 
-# ROCR curve
+## ROCR curve
 
 To get a ROC curve for your model
-```{r fig.height=6, fig.width=6}
+```{r fig.height=5, fig.width=5}
 tbl<- cbind(yul= pred_newENV$yul, test_data[,3])%>%
   mutate(occurance=as.numeric(ifelse(is.na(occurance),0, occurance)))%>%
   drop_na()
