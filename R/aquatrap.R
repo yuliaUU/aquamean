@@ -1,7 +1,7 @@
 #' Aquamean
 #'
 #' @param ENV A data frame with each column as an environmental variable
-#' @param quant A numeric vector with 4 quarantines. Default is .01, 0.25, 0.75, 0.99 quantiles.
+#' @param quant A numeric vector with 4 quantiles. Default is .01, 0.25, 0.75, 0.99 quantiles.
 #' @return A myAquaOut object 1) trap.env - trapezoid shaped environmental variables, 2) env - imputed environmental data, 3) metrics - a data frame with trapezoid parameters for each environmental variable
 #' @export
 #'
