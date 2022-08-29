@@ -19,6 +19,18 @@ You can install the development version of aquamean from
 # install.packages("devtools")
 devtools::install_github("yuliaUU/aquamean")
 ```
+## Citation
+
+Reygondeau, G., Egorova, Y. (2022). AQUAMEAN: R package to reporduce the aquamap model {trapeze} based on spatial occurrenceaquamap model. R package version 1.1.
+
+```
+@Manual{,
+  title = {biomod2: Ensemble Platform for Species Distribution Modeling},
+  author = {Wilfried Thuiller and Damien Georges and Maya Gueguen and Robin Engler and Frank Breiner and Bruno Lafourcade},
+  year = {2022},
+  note = {R package version 4.1},
+}
+```
 
 ## Example
 
@@ -126,3 +138,4 @@ AUC <- ROCR::performance( ROC_curve, "auc")@y.values
 print(AUC[[1]])
 #> [1] 0.8608912
 ```
+
