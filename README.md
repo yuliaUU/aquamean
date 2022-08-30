@@ -25,10 +25,10 @@ Reygondeau, G., Egorova, Y. (2022). AQUAMEAN: R package to reporduce the aquamap
 
 ```
 @Manual{,
-  title = {biomod2: Ensemble Platform for Species Distribution Modeling},
-  author = {Wilfried Thuiller and Damien Georges and Maya Gueguen and Robin Engler and Frank Breiner and Bruno Lafourcade},
+  title = {aquamean: R adapttaion of AQUAMAPS speacies distribution model (presence-only)},
+  author = {Reygondeau, G. and Egorova, Y.},
   year = {2022},
-  note = {R package version 4.1},
+  note = {R package version 1.0},
 }
 ```
 
