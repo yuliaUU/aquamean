@@ -21,7 +21,7 @@ devtools::install_github("yuliaUU/aquamean")
 ```
 ## Citation
 
-Reygondeau, G., Egorova, Y. (2022). AQUAMEAN: R package to reporduce the aquamap model {trapeze} based on spatial occurrenceaquamap model. R package version 1.1.
+Reygondeau, G., Egorova, Y. (2022). AQUAMEAN: R package to reporduce the aquamap model {trapeze} based on spatial occurrenceaquamap model. R package version 1.0.
 
 ```
 @Manual{,
